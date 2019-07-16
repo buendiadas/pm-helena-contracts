@@ -1,20 +1,6 @@
-const OlympiaToken = artifacts.require('OlympiaToken')
-const args = require('yargs').argv;
+const Proton = artifacts.require('ReferenceToken')
+//const args = require('yargs').argv;
 
 module.exports = function(deployer) {
-    deployer
-        .deploy(OlympiaToken)
-        .then(
-            deployedToken => {
-                if (args.admins) {
-                    return OlympiaToken.deployed().then(
-                        olympiaInstance => {
-                            const admins = args.admins.split(',')
-                            console.log("Adding admins...", admins)
-                            return olympiaInstance.addAdmin(admins)
-                        }
-                    )
-                }
-            }
-        )
+    deployer.deploy(Proton, "asdf", "asdf", 20, ['0x08c9906A56b7D6EC75676Db0E307921ED7438989'], '0x08c9906A56b7D6EC75676Db0E307921ED7438989', 1000);
 }
